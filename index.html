@@ -9,166 +9,193 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* Optimized for Desktop viewing */
         .chart-container {
             position: relative;
             width: 100%;
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+            height: 400px; /* Increased default height for desktop */
+            max-height: 500px;
         }
-        @media (min-width: 768px) {
-            .chart-container { height: 400px; }
+        @media (min-width: 1280px) {
+            .chart-container { height: 450px; }
         }
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #f3f4f6; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        .stat-card { transition: transform 0.2s ease; }
-        .stat-card:hover { transform: translateY(-4px); }
-        .highlight-border { border-left: 8px solid; }
+        
+        .stat-card { 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+        }
+        .stat-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: rgba(37, 99, 235, 0.1);
+        }
+        .highlight-border { border-left: 10px solid; }
+        
+        /* Desktop specific typography scaling */
+        @media (min-width: 1024px) {
+            html { font-size: 17px; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans leading-relaxed">
 
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-blue-700 text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <span class="font-bold text-xl tracking-tight">Fragrance House HK</span>
-                <div class="hidden md:flex space-x-6 text-sm">
-                    <a href="#overview" class="hover:text-blue-200 font-medium">1. Overview</a>
-                    <a href="#comparison" class="hover:text-blue-200 font-medium">2. YoY Comparison</a>
-                    <a href="#special-analysis" class="hover:text-blue-200 font-medium">3. Dec 14 Analysis</a>
-                    <a href="#drivers" class="hover:text-blue-200 font-medium">4. Drivers</a>
-                    <a href="#action" class="hover:text-blue-200 font-medium">5. Action Plan</a>
+    <!-- Navigation - Desktop Optimized Spacing -->
+    <nav class="sticky top-0 z-50 bg-blue-700 text-white shadow-xl">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex items-center justify-between h-20">
+                <span class="font-bold text-2xl tracking-tight">Fragrance House HK</span>
+                <div class="hidden md:flex space-x-10 text-base">
+                    <a href="#overview" class="hover:text-blue-200 font-semibold transition-colors">1. Overview</a>
+                    <a href="#comparison" class="hover:text-blue-200 font-semibold transition-colors">2. YoY Comparison</a>
+                    <a href="#special-analysis" class="hover:text-blue-200 font-semibold transition-colors">3. Dec 14 Deep Dive</a>
+                    <a href="#drivers" class="hover:text-blue-200 font-semibold transition-colors">4. Drivers</a>
+                    <a href="#action" class="hover:text-blue-200 font-semibold transition-colors">5. Action Plan</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <main class="max-w-screen-xl mx-auto px-8 py-12 space-y-20">
 
         <!-- SECTION 1: PERFORMANCE OVERVIEW -->
-        <section id="overview" class="space-y-8">
-            <div class="bg-white rounded-xl shadow-md p-8 highlight-border border-blue-600">
-                <h1 class="text-3xl font-extrabold text-gray-900 mb-4 uppercase tracking-wide">1. December 2025 Performance Overview</h1>
-                <p class="text-lg text-gray-700">
-                    Through December 19th, 2025, Fragrance House HK has demonstrated a powerful recovery. Total sales have reached <b>HKD 13,752.38</b>, driven by a <b>32.5% increase</b> in revenue year-over-year. The success stems from a <b>Hybrid Product Strategy</b> recommended in November.
+        <section id="overview" class="space-y-10">
+            <div class="bg-white rounded-2xl shadow-lg p-10 highlight-border border-blue-600">
+                <h1 class="text-4xl font-black text-gray-900 mb-6 uppercase tracking-tight">1. December 2025 Performance Overview</h1>
+                <p class="text-xl text-gray-700 leading-relaxed max-w-4xl">
+                    Through December 19th, 2025, Fragrance House HK has demonstrated a powerful recovery. Total sales have reached <b class="text-blue-700">HKD 13,752.38</b>, driven by a <b class="text-green-600">32.5% increase</b> in revenue year-over-year. Success is rooted in the strategic implementation of the <b>Hybrid Product Strategy</b>.
                 </p>
             </div>
 
-            <!-- KPI Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-xl shadow-sm p-6 border-t-4 border-blue-500 stat-card">
-                    <h3 class="text-gray-500 text-xs font-bold uppercase text-blue-700">Total Sales</h3>
-                    <p class="text-2xl font-black text-gray-900 mt-2">HKD 13,752</p>
-                    <span class="text-green-600 font-bold text-sm">✅ Growth Target Met</span>
+            <!-- KPI Grid - Larger Desktop Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl shadow-sm p-8 border-t-8 border-blue-500 stat-card">
+                    <h3 class="text-gray-500 text-sm font-black uppercase text-blue-700 tracking-wider">Total Sales</h3>
+                    <p class="text-3xl font-black text-gray-900 mt-3">HKD 13,752</p>
+                    <div class="mt-4 flex items-center text-green-600 font-bold">
+                        <span>✅ Target Achieved</span>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-sm p-6 border-t-4 border-green-500 stat-card">
-                    <h3 class="text-gray-500 text-xs font-bold uppercase text-green-700">Conversion Rate</h3>
-                    <p class="text-2xl font-black text-gray-900 mt-2">0.58%</p>
-                    <span class="text-green-600 font-bold text-sm">▲ Up from 0.36% (Nov)</span>
+                <div class="bg-white rounded-2xl shadow-sm p-8 border-t-8 border-green-500 stat-card">
+                    <h3 class="text-gray-500 text-sm font-black uppercase text-green-700 tracking-wider">Conversion Rate</h3>
+                    <p class="text-3xl font-black text-gray-900 mt-3">0.58%</p>
+                    <div class="mt-4 flex items-center text-green-600 font-bold">
+                        <span>▲ vs 0.36% (Nov)</span>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-sm p-6 border-t-4 border-orange-500 stat-card">
-                    <h3 class="text-gray-500 text-xs font-bold uppercase text-orange-700">Average Order Value</h3>
-                    <p class="text-2xl font-black text-gray-900 mt-2">HKD 480</p>
-                    <span class="text-blue-600 font-bold text-sm">Consistent Premium</span>
+                <div class="bg-white rounded-2xl shadow-sm p-8 border-t-8 border-orange-500 stat-card">
+                    <h3 class="text-gray-500 text-sm font-black uppercase text-orange-700 tracking-wider">Avg Order Value</h3>
+                    <p class="text-3xl font-black text-gray-900 mt-3">HKD 480</p>
+                    <div class="mt-4 flex items-center text-blue-600 font-bold">
+                        <span>Consistent Premium</span>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-sm p-6 border-t-4 border-red-500 stat-card">
-                    <h3 class="text-gray-500 text-xs font-bold uppercase text-red-700">Returning Rate</h3>
-                    <p class="text-2xl font-black text-gray-900 mt-2">42.9%</p>
-                    <span class="text-blue-600 font-bold text-sm">✅ Exceptional Loyalty</span>
+                <div class="bg-white rounded-2xl shadow-sm p-8 border-t-8 border-red-500 stat-card">
+                    <h3 class="text-gray-500 text-sm font-black uppercase text-red-700 tracking-wider">Returning Rate</h3>
+                    <p class="text-3xl font-black text-gray-900 mt-3">42.9%</p>
+                    <div class="mt-4 flex items-center text-green-600 font-bold">
+                        <span>✅ High Loyalty</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Traffic Source Engagement</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 border-b pb-4">Traffic Source Engagement</h3>
                     <div class="chart-container">
                         <canvas id="sourceChart"></canvas>
                     </div>
-                    <p class="text-sm text-gray-500 mt-4">Direct traffic volume is high (64%), but <b>Search</b> yields the highest conversion efficiency at 0.93%.</p>
+                    <p class="text-base text-gray-600 mt-6 leading-relaxed">Direct traffic remains the volume leader (64%), while <b>Search</b> demonstrates the highest intent with a conversion efficiency of <b>0.93%</b>.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Revenue by Category</h3>
+                <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 border-b pb-4">Revenue by Category</h3>
                     <div class="chart-container">
                         <canvas id="categoryChart"></canvas>
                     </div>
-                    <p class="text-sm text-gray-500 mt-4"><b>Eau de Parfum</b> leads with 33% revenue, proving the success of our bestseller reactivation.</p>
+                    <p class="text-base text-gray-600 mt-6 leading-relaxed"><b>Eau de Parfum</b> has reclaimed its lead at 33% revenue share, validating the focus on premium bestseller varieties.</p>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 2: YoY COMPARISON -->
-        <section id="comparison" class="space-y-8">
-            <div class="bg-white rounded-xl shadow-md p-8 highlight-border border-orange-500">
-                <h2 class="text-3xl font-extrabold text-gray-900 mb-4 uppercase tracking-wide">2. Comparison: 2025 vs. 2024</h2>
-                <p class="text-lg text-gray-700">
-                    A shift toward <b>Efficiency</b>: Despite 38% <b>less traffic</b>, we generated 32% <b>more revenue</b>. Conversion efficiency improved by 125% year-over-year.
+        <section id="comparison" class="space-y-10">
+            <div class="bg-white rounded-2xl shadow-lg p-10 highlight-border border-orange-500">
+                <h2 class="text-4xl font-black text-gray-900 mb-6 uppercase tracking-wide">2. Comparison: 2025 vs. 2024</h2>
+                <p class="text-xl text-gray-700">
+                    A definitive pivot toward <b>Operational Efficiency</b>: Generating 32% <b>more revenue</b> from 38% <b>less traffic</b> volume compared to last year.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Daily Sales Trend: Dec 1-19</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Daily Sales Performance Trend</h3>
                     <div class="chart-container">
                         <canvas id="trendChart"></canvas>
                     </div>
                 </div>
-                <div class="bg-gray-900 text-white p-8 rounded-xl shadow-sm flex flex-col justify-center space-y-8 text-center">
+                <div class="bg-gray-900 text-white p-10 rounded-2xl shadow-xl flex flex-col justify-center space-y-10 text-center">
                     <div>
-                        <h3 class="text-orange-400 text-xs font-black uppercase tracking-widest">Efficiency Multiplier</h3>
-                        <p class="text-5xl font-black mt-2">+125%</p>
-                        <p class="text-sm text-gray-400 mt-1">Conversion Improvement</p>
+                        <h3 class="text-orange-400 text-sm font-black uppercase tracking-widest">Growth Factor</h3>
+                        <p class="text-6xl font-black mt-4">+125%</p>
+                        <p class="text-lg text-gray-400 mt-2">Conversion Lift</p>
                     </div>
-                    <div class="pt-4 border-t border-gray-700">
-                        <p class="text-sm text-gray-400 italic">"Doing more with less traffic by focusing on product-market fit."</p>
+                    <div class="pt-8 border-t border-gray-700">
+                        <p class="text-lg text-gray-300 italic font-medium">"Significant improvement in traffic quality and landing page relevance."</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 3: SPECIAL ANALYSIS - DECEMBER 14 -->
-        <section id="special-analysis" class="space-y-8">
-            <div class="bg-white rounded-xl shadow-md p-8 highlight-border border-red-600">
-                <h2 class="text-3xl font-extrabold text-gray-900 mb-4 uppercase tracking-wide">3. Special Analysis: December 14 Spike</h2>
-                <p class="text-lg text-gray-700 italic">Why was Dec 14, 2024 (HKD 3,435) significantly higher than Dec 14, 2025 (HKD 1,732)?</p>
+        <section id="special-analysis" class="space-y-10">
+            <div class="bg-white rounded-2xl shadow-lg p-10 highlight-border border-red-600">
+                <h2 class="text-4xl font-black text-gray-900 mb-4 uppercase tracking-wide">3. Special Analysis: December 14 Spike</h2>
+                <p class="text-xl text-gray-700 italic">Historical gap analysis: 2024 (HKD 3,435) vs. 2025 (HKD 1,732).</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <!-- Order Analysis Card -->
-                <div class="bg-white p-8 rounded-xl shadow-sm space-y-6">
-                    <h3 class="text-xl font-bold text-gray-800 border-b pb-2">The "Mega Order" Factor</h3>
-                    <div class="p-4 bg-blue-50 rounded-lg">
-                        <p class="text-blue-900 font-bold text-lg">Reed Diffuser White Michelia ⭐</p>
-                        <ul class="text-sm text-blue-800 space-y-1 mt-2">
-                            <li><b>Revenue:</b> HKD 1,774.80 (52% of total day)</li>
-                            <li><b>Quantity:</b> 6 units (Single Order)</li>
-                            <li><b>Customer:</b> New Customer / Direct Traffic</li>
-                        </ul>
+                <div class="bg-white p-10 rounded-2xl shadow-md space-y-8">
+                    <h3 class="text-2xl font-bold text-gray-800 border-b-2 border-blue-100 pb-4">The "Bulk Order" Benchmark</h3>
+                    <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100">
+                        <p class="text-blue-900 font-black text-2xl mb-4">Reed Diffuser White Michelia ⭐</p>
+                        <div class="grid grid-cols-2 gap-4 text-base text-blue-800">
+                            <div class="p-3 bg-white rounded-xl shadow-sm">
+                                <p class="text-xs uppercase font-bold text-blue-400">Revenue</p>
+                                <p class="font-black">HKD 1,774.80</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl shadow-sm">
+                                <p class="text-xs uppercase font-bold text-blue-400">Quantity</p>
+                                <p class="font-black">6 Units</p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-sm text-gray-600">
-                        This was likely a <b>Corporate Gifting</b> or <b>Bulk Wholesale</b> purchase. At ~HKD 296/unit, the customer bought 6 identical premium items. This single order accounted for 17% of the entire 19-day revenue in 2024.
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        This single 2024 transaction represents a <b>B2B / Corporate Gifting</b> profile. By identifying this pattern, we recognize that bulk orders are responsible for the largest single-day peaks in Fragrance House history.
                     </p>
                 </div>
 
                 <!-- Learning Card -->
-                <div class="bg-gray-800 text-white p-8 rounded-xl shadow-sm">
-                    <h3 class="text-xl font-bold text-orange-400 mb-6">Key Learning: B2B is Untapped</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="bg-orange-500 rounded-full h-8 w-8 flex items-center justify-center font-bold">1</div>
-                            <p class="text-sm leading-snug"><b>Corporate Orders are Game-Changers:</b> One bulk order can transform a month's ROI.</p>
+                <div class="bg-gray-800 text-white p-10 rounded-2xl shadow-md">
+                    <h3 class="text-2xl font-bold text-orange-400 mb-10 border-b border-gray-700 pb-4">Key Learning: Unlocking B2B</h3>
+                    <div class="space-y-10">
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-orange-500 rounded-full h-10 w-10 flex items-center justify-center font-black flex-shrink-0">1</div>
+                            <p class="text-lg leading-relaxed"><b>Corporate Leverage:</b> One bulk order provides 17% of total monthly baseline revenue.</p>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="bg-blue-500 rounded-full h-8 w-8 flex items-center justify-center font-bold">2</div>
-                            <p class="text-sm leading-snug"><b>Premium Products + Bulk = High AOV:</b> Dec 14 AOV was HKD 858 vs HKD 476 average.</p>
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center font-black flex-shrink-0">2</div>
+                            <p class="text-lg leading-relaxed"><b>Premium Scaling:</b> Combining <b>EDP</b> with bulk pricing targets high-value office gifting.</p>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="bg-green-500 rounded-full h-8 w-8 flex items-center justify-center font-bold">3</div>
-                            <p class="text-sm leading-snug"><b>White Michelia is a Hero:</b> Generated HKD 2,414 in 2024, but <b>HKD 0</b> in 2025 (Opportunity!).</p>
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-green-500 rounded-full h-10 w-10 flex items-center justify-center font-black flex-shrink-0">3</div>
+                            <p class="text-lg leading-relaxed"><b>Hero Scents:</b> White Michelia is a proven winner; its current zero-sale status is a massive opportunity.</p>
                         </div>
                     </div>
                 </div>
@@ -176,98 +203,98 @@
         </section>
 
         <!-- SECTION 4: REASONS FOR PERFORMANCE CHANGE -->
-        <section id="drivers" class="space-y-8">
-            <div class="bg-white rounded-xl shadow-md p-8 highlight-border border-green-500">
-                <h2 class="text-3xl font-extrabold text-gray-900 mb-4 uppercase tracking-wide">4. Reasons for Sales Performance</h2>
-                <p class="text-lg text-gray-700">
-                    Growth in 2025 is attributed to the <b>Hybrid Product Strategy</b> (60% bestsellers, 40% seasonal) and a massive <b>200% surge</b> in customer retention.
+        <section id="drivers" class="space-y-10">
+            <div class="bg-white rounded-2xl shadow-lg p-10 highlight-border border-green-500">
+                <h2 class="text-4xl font-black text-gray-900 mb-6 uppercase tracking-wide">4. Reasons for Sales Performance</h2>
+                <p class="text-xl text-gray-700">
+                    2025 growth is structurally supported by better <b>Product Mix</b> and <b>Retention</b>.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="flex items-start space-x-4 p-6 bg-blue-50 rounded-xl">
-                    <div class="bg-blue-600 text-white font-black rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0">1</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="flex items-center space-x-6 p-8 bg-blue-50 rounded-2xl border border-blue-100">
+                    <div class="bg-blue-600 text-white font-black rounded-2xl h-14 w-14 flex items-center justify-center flex-shrink-0 shadow-lg text-xl">1</div>
                     <div>
-                        <h4 class="font-black text-blue-900 uppercase">Successful Product Mix (40%)</h4>
-                        <p class="text-sm text-blue-800 mt-2">Reactivating <b>Wine on Birch</b>, <b>Peach</b>, and <b>Flower Path</b> varieties created a stable HKD 4,500 base.</p>
+                        <h4 class="font-black text-blue-900 uppercase text-lg">Product Diversification (40%)</h4>
+                        <p class="text-base text-blue-800 mt-2">Reactivating <b>Wine on Birch</b> and adding EDP varieties reduced SKU dependency.</p>
                     </div>
                 </div>
-                <div class="flex items-start space-x-4 p-6 bg-green-50 rounded-xl">
-                    <div class="bg-green-600 text-white font-black rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0">2</div>
+                <div class="flex items-center space-x-6 p-8 bg-green-50 rounded-2xl border border-green-100">
+                    <div class="bg-green-600 text-white font-black rounded-2xl h-14 w-14 flex items-center justify-center flex-shrink-0 shadow-lg text-xl">2</div>
                     <div>
-                        <h4 class="font-black text-green-900 uppercase">Loyalty Triple-Play (30%)</h4>
-                        <p class="text-sm text-green-800 mt-2">Returning rate rose from 14% to <b>43%</b>. Brand loyalty is now the primary engine of predictable growth.</p>
+                        <h4 class="font-black text-green-900 uppercase text-lg">Loyalty Retention (30%)</h4>
+                        <p class="text-base text-green-800 mt-2">Returning rate at <b>43%</b> provides a highly predictable revenue floor.</p>
                     </div>
                 </div>
-                <div class="flex items-start space-x-4 p-6 bg-orange-50 rounded-xl">
-                    <div class="bg-orange-600 text-white font-black rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0">3</div>
+                <div class="flex items-center space-x-6 p-8 bg-orange-50 rounded-2xl border border-orange-100">
+                    <div class="bg-orange-600 text-white font-black rounded-2xl h-14 w-14 flex items-center justify-center flex-shrink-0 shadow-lg text-xl">3</div>
                     <div>
-                        <h4 class="font-black text-orange-900 uppercase">Search Conversion Quadrupled (20%)</h4>
-                        <p class="text-sm text-orange-800 mt-2">High-intent search traffic conversion rose by <b>304%</b>, indicating better product landing pages.</p>
+                        <h4 class="font-black text-orange-900 uppercase text-lg">Search Precision (20%)</h4>
+                        <p class="text-base text-orange-800 mt-2">Search conversion rose <b>304%</b> through better landing page alignment.</p>
                     </div>
                 </div>
-                <div class="flex items-start space-x-4 p-6 bg-gray-100 rounded-xl">
-                    <div class="bg-gray-600 text-white font-black rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0">4</div>
+                <div class="flex items-center space-x-6 p-8 bg-gray-100 rounded-2xl border border-gray-200">
+                    <div class="bg-gray-600 text-white font-black rounded-2xl h-14 w-14 flex items-center justify-center flex-shrink-0 shadow-lg text-xl">4</div>
                     <div>
-                        <h4 class="font-black text-gray-900 uppercase">Quality vs Volume (10%)</h4>
-                        <p class="text-sm text-gray-800 mt-2">Generating <b>32% more revenue with 38% less traffic</b> proves superior targeting efficiency.</p>
+                        <h4 class="font-black text-gray-900 uppercase text-lg">Targeting Quality (10%)</h4>
+                        <p class="text-base text-gray-800 mt-2">Efficiency gains allow for higher ROI with lower absolute traffic requirements.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 5: ACTION PLAN -->
-        <section id="action" class="space-y-8">
-            <div class="bg-gray-900 text-white rounded-xl shadow-md p-8 highlight-border border-blue-400">
-                <h2 class="text-3xl font-extrabold text-blue-400 mb-4 uppercase tracking-wide">5. Suggestions & Action Plan</h2>
-                <p class="text-lg text-gray-300">
-                    Final holiday push: Replicate the B2B success of 2024 and scale top performers.
+        <section id="action" class="space-y-10">
+            <div class="bg-gray-900 text-white rounded-2xl shadow-xl p-12 highlight-border border-blue-400">
+                <h2 class="text-4xl font-black text-blue-400 mb-6 uppercase tracking-wide">5. Suggestions & Action Plan</h2>
+                <p class="text-xl text-gray-300">
+                    Entering the final holiday shipping window. Strategic priority: <b>Replicate Corporate Bulk Success</b>.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-500">
-                        <h4 class="font-black text-red-700 uppercase mb-2">⚡ Immediate: Corporate Gift Push (Dec 20-24)</h4>
-                        <p class="text-sm text-gray-600">Target HR managers on LinkedIn. Offer <b>"Corporate Sets - Order 5+, Get 15% Off"</b>. Messaging: <b>"Last chance for corporate Christmas delivery."</b></p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="space-y-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-l-8 border-red-500 stat-card">
+                        <h4 class="font-black text-red-700 uppercase mb-3 text-lg">⚡ Urgent: Final B2B Ad Push (Dec 20-24)</h4>
+                        <p class="text-base text-gray-600">Campaign: <b>"Corporate Gift Sets - 15% Off 5+ Units."</b> Target HR and Office Admins immediately.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500">
-                        <h4 class="font-black text-blue-700 uppercase mb-2">⚡ Product Recovery: White Michelia</h4>
-                        <p class="text-sm text-gray-600">Check stock for White Michelia (the Dec 14 hero). If available, promote as <b>"Our Most Popular Corporate Scent"</b> to capture bulk orders.</p>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-l-8 border-blue-500 stat-card">
+                        <h4 class="font-black text-blue-700 uppercase mb-3 text-lg">⚡ White Michelia Recovery</h4>
+                        <p class="text-base text-gray-600">Promote as <b>"Hong Kong's Bestselling Corporate Scent"</b> to capture the missing HKD 2,400+ potential.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500">
-                        <h4 class="font-black text-green-700 uppercase mb-2">⚡ Bulk Incentive Mechanism</h4>
-                        <p class="text-sm text-gray-600">Add a <b>"Bulk Orders Welcome"</b> banner. Setup pricing tiers: 3-4 units (10% off), 5-9 units (15% off), 10+ units (20% off).</p>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-l-8 border-green-500 stat-card">
+                        <h4 class="font-black text-green-700 uppercase mb-3 text-lg">⚡ Automated Checkout Recovery</h4>
+                        <p class="text-base text-gray-600">Setup email triggers within 120 minutes of cart abandonment to maximize the 1.99% ATC pool.</p>
                     </div>
                 </div>
 
-                <!-- Forecast Table -->
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Projected Annual B2B Impact</h3>
+                <!-- Forecast Table - High Visibility Desktop UI -->
+                <div class="bg-white p-10 rounded-2xl shadow-md border border-gray-100">
+                    <h3 class="text-2xl font-black text-gray-800 mb-8 text-center uppercase tracking-widest">Projected B2B Revenue Impact</h3>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left">
-                            <thead class="text-xs uppercase bg-gray-50">
+                        <table class="w-full text-base text-left">
+                            <thead class="bg-gray-50 text-gray-500 font-bold uppercase text-xs tracking-widest">
                                 <tr>
-                                    <th class="p-2">Scenario</th>
-                                    <th class="p-2">Assumption</th>
-                                    <th class="p-2">Annual Impact</th>
+                                    <th class="p-4 border-b">Scenario</th>
+                                    <th class="p-4 border-b">Assumption</th>
+                                    <th class="p-4 border-b">Annual Lift</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="border-b">
-                                    <td class="p-2 font-bold">Conservative</td>
-                                    <td class="p-2">1 bulk order/mo</td>
-                                    <td class="p-2 text-blue-600">+HKD 21,600</td>
+                            <tbody class="text-gray-700 font-medium">
+                                <tr class="hover:bg-blue-50 transition-colors">
+                                    <td class="p-4 border-b font-black text-blue-700">Conservative</td>
+                                    <td class="p-4 border-b">1 bulk order/mo</td>
+                                    <td class="p-4 border-b">+HKD 21,600</td>
                                 </tr>
-                                <tr class="border-b">
-                                    <td class="p-2 font-bold">Moderate</td>
-                                    <td class="p-2">2 bulk orders + B2B</td>
-                                    <td class="p-2 text-orange-600">+HKD 60,000</td>
+                                <tr class="hover:bg-orange-50 transition-colors">
+                                    <td class="p-4 border-b font-black text-orange-700">Moderate</td>
+                                    <td class="p-4 border-b">2 orders + B2B</td>
+                                    <td class="p-4 border-b">+HKD 60,000</td>
                                 </tr>
-                                <tr>
-                                    <td class="p-2 font-bold">Optimistic</td>
-                                    <td class="p-2">Active B2B Channel</td>
-                                    <td class="p-2 text-green-600">+HKD 120,000</td>
+                                <tr class="hover:bg-green-50 transition-colors">
+                                    <td class="p-4 font-black text-green-700">Optimistic</td>
+                                    <td class="p-4">Active B2B Sales</td>
+                                    <td class="p-4">+HKD 120,000</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -278,9 +305,9 @@
 
     </main>
 
-    <footer class="bg-gray-900 text-gray-500 py-12 mt-16 text-center border-t border-gray-800">
-        <p class="text-sm uppercase font-black tracking-widest">Fragrance House HK | Internal Performance Analytics</p>
-        <p class="text-xs mt-2">© 2025 Sidekick AI Business Analyst. Prepared on Dec 19, 2025.</p>
+    <footer class="bg-gray-900 text-gray-500 py-16 mt-20 text-center border-t border-gray-800">
+        <p class="text-base uppercase font-black tracking-widest text-gray-400">Fragrance House HK | Management Presentation</p>
+        <p class="text-sm mt-4 tracking-wide">Generated on December 19, 2025. Data is strictly confidential.</p>
     </footer>
 
     <script>
@@ -288,6 +315,10 @@
         const standardTooltip = {
             plugins: {
                 tooltip: {
+                    padding: 12,
+                    titleFont: { size: 16, weight: 'bold' },
+                    bodyFont: { size: 14 },
+                    backgroundColor: 'rgba(17, 24, 39, 0.9)',
                     callbacks: {
                         title: function(tooltipItems) {
                             const item = tooltipItems[0];
@@ -326,14 +357,15 @@
                 datasets: [{
                     data: [64, 19, 16, 1],
                     backgroundColor: ['#2563EB', '#EF4444', '#10B981', '#F59E0B'],
-                    borderWidth: 0
+                    borderWidth: 0,
+                    hoverOffset: 15
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { position: 'bottom', labels: { font: { weight: 'bold' } } }
+                    legend: { position: 'bottom', labels: { font: { weight: 'bold', size: 14 }, padding: 25 } }
                 }
             }
         });
@@ -345,10 +377,11 @@
             data: {
                 labels: ['Eau de Parfum', 'Reed Diffusers', 'Scented Candles', 'Car Fragrances', 'Limited Edition'],
                 datasets: [{
-                    label: '% of Total Revenue',
+                    label: '% Revenue Share',
                     data: [33, 28, 16, 13, 8],
                     backgroundColor: '#2563EB',
-                    borderRadius: 5
+                    borderRadius: 10,
+                    barThickness: 45
                 }]
             },
             options: {
@@ -356,7 +389,8 @@
                 maintainAspectRatio: false,
                 plugins: standardTooltip.plugins,
                 scales: {
-                    y: { beginAtZero: true, max: 40 }
+                    y: { beginAtZero: true, max: 40, ticks: { font: { weight: 'bold' } } },
+                    x: { ticks: { font: { weight: 'bold' } } }
                 }
             }
         });
@@ -369,33 +403,38 @@
                 labels: Array.from({length: 19}, (_, i) => i + 1 + " Dec"),
                 datasets: [
                     {
-                        label: '2025 Revenue',
+                        label: '2025 (Current)',
                         data: [705, 1300, 181, 0, 625, 474, 965, 0, 625, 541, 1600, 912, 625, 1732, 1634, 1150, 0, 714, 0],
                         borderColor: '#2563EB',
-                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        backgroundColor: 'rgba(37, 99, 235, 0.08)',
                         fill: true,
-                        tension: 0.4,
-                        borderWidth: 4
+                        tension: 0.45,
+                        borderWidth: 6,
+                        pointRadius: 4,
+                        pointHoverRadius: 8
                     },
                     {
-                        label: '2024 Revenue',
+                        label: '2024 (Last Year)',
                         data: [1000, 184, 225, 565, 877, 411, 581, 148, 513, 146, 400, 0, 225, 3400, 1300, 0, 0, 0, 364],
                         borderColor: '#EF4444',
-                        borderDash: [5, 5],
+                        borderDash: [8, 4],
                         fill: false,
-                        tension: 0.4,
-                        borderWidth: 2
+                        tension: 0.45,
+                        borderWidth: 3,
+                        pointRadius: 3
                     }
                 ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { ...standardTooltip.plugins, legend: { position: 'bottom' } },
-                scales: { y: { beginAtZero: true } }
+                plugins: { ...standardTooltip.plugins, legend: { position: 'bottom', labels: { padding: 30, font: { size: 14, weight: 'bold' } } } },
+                scales: { 
+                    y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
+                    x: { grid: { display: false } }
+                }
             }
         });
-
     </script>
 </body>
 </html>
