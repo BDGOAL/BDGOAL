@@ -103,6 +103,23 @@
                     </div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 border-b pb-4">Traffic Source Engagement</h3>
+                    <div class="chart-container">
+                        <canvas id="sourceChart"></canvas>
+                    </div>
+                    <p class="text-base text-gray-600 mt-6 leading-relaxed">Direct traffic remains the volume leader (64%), while <b>Search</b> demonstrates the highest shopper intent with a conversion efficiency of <b>0.93%</b>.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 border-b pb-4">Revenue by Category</h3>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    <p class="text-base text-gray-600 mt-6 leading-relaxed"><b>Eau de Parfum</b> has reclaimed its lead at 33% revenue share, validating the focus on premium bestseller varieties.</p>
+                </div>
+            </div>
         </section>
 
         <!-- SECTION 2: YoY COMPARISON -->
@@ -123,7 +140,7 @@
                 </div>
                 <div class="bg-gray-900 text-white p-10 rounded-2xl shadow-xl flex flex-col justify-center space-y-10 text-center">
                     <div>
-                        <h3 class="text-orange-400 text-sm font-black uppercase tracking-widest">Efficiency Lift</h3>
+                        <h3 class="text-orange-400 text-sm font-black uppercase tracking-widest text-xs">Efficiency Lift</h3>
                         <p class="text-6xl font-black mt-4">+125%</p>
                         <p class="text-lg text-gray-400 mt-2">Conversion Improvement</p>
                     </div>
@@ -172,8 +189,8 @@
                     <div class="chart-container" style="height: 250px;">
                         <canvas id="whatsappMixChart"></canvas>
                     </div>
-                    <p class="text-sm text-gray-500 mt-4 leading-relaxed">
-                        WhatsApp successfully targeted existing contacts, driving <b>76%</b> of sales from returning customers (up from 63% pre-broadcast).
+                    <p class="text-sm text-gray-500 mt-4 leading-relaxed text-center">
+                        WhatsApp successfully targeted existing contacts, driving <b>76%</b> of sales from returning customers.
                     </p>
                 </div>
 
@@ -183,8 +200,8 @@
                     <div class="chart-container" style="height: 250px;">
                         <canvas id="whatsappTrafficChart"></canvas>
                     </div>
-                    <p class="text-sm text-gray-500 mt-4 leading-relaxed">
-                        <b>Direct Traffic</b> dominated at 65%, which is the typical landing category for WhatsApp broadcast links.
+                    <p class="text-sm text-gray-500 mt-4 leading-relaxed text-center">
+                        <b>Direct Traffic</b> dominated at 65%, typical for WhatsApp broadcast landing behavior.
                     </p>
                 </div>
             </div>
@@ -267,8 +284,8 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <div class="space-y-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-md border-l-8 border-green-500 stat-card">
-                        <h4 class="font-black text-green-700 uppercase mb-3 text-lg text-center">⚡ IMMEDIATE: New Year WhatsApp Follow-Up</h4>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-l-8 border-green-500 stat-card text-center">
+                        <h4 class="font-black text-green-700 uppercase mb-3 text-lg">⚡ IMMEDIATE: New Year WhatsApp Follow-Up</h4>
                         <div class="bg-gray-100 p-6 rounded-xl text-sm font-medium text-gray-700 mb-4 border border-gray-200">
                             <p class="italic mb-2">Suggested Message:</p>
                             "Missed Christmas? No worries! 🎄<br>
@@ -359,7 +376,32 @@
             }
         });
 
-        // --- CHART 2: DAILY TREND COMPARISON ---
+        // --- CHART 2: CATEGORY PERFORMANCE ---
+        const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+        new Chart(categoryCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Eau de Parfum', 'Reed Diffusers', 'Scented Candles', 'Car Fragrances', 'Limited Edition'],
+                datasets: [{
+                    label: '% Revenue Share',
+                    data: [33, 28, 16, 13, 8],
+                    backgroundColor: '#2563EB',
+                    borderRadius: 10,
+                    barThickness: 45
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: standardTooltip.plugins,
+                scales: {
+                    y: { beginAtZero: true, max: 40, ticks: { font: { weight: 'bold' } } },
+                    x: { ticks: { font: { weight: 'bold' } } }
+                }
+            }
+        });
+
+        // --- CHART 3: DAILY TREND COMPARISON ---
         const trendCtx = document.getElementById('trendChart').getContext('2d');
         new Chart(trendCtx, {
             type: 'line',
@@ -400,7 +442,7 @@
             }
         });
 
-        // --- CHART 3: WHATSAPP MIX SHIFT ---
+        // --- CHART 4: WHATSAPP MIX SHIFT ---
         const mixCtx = document.getElementById('whatsappMixChart').getContext('2d');
         new Chart(mixCtx, {
             type: 'pie',
@@ -419,7 +461,7 @@
             }
         });
 
-        // --- CHART 4: WHATSAPP TRAFFIC SOURCE ---
+        // --- CHART 5: WHATSAPP TRAFFIC SOURCE ---
         const trafficCtx = document.getElementById('whatsappTrafficChart').getContext('2d');
         new Chart(trafficCtx, {
             type: 'bar',
