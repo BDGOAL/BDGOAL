@@ -98,15 +98,15 @@
                 <div class="metric-value text-snapio">32</div>
                 <div class="mt-4 flex items-center gap-2">
                     <span class="badge badge-alert">Low Volume</span>
-                    <span class="text-[10px] text-muted">vs 7-10 target</span>
+                    <span class="text-[10px] text-muted">Target: 7-10 daily</span>
                 </div>
             </div>
             <div class="card">
                 <span class="text-xs font-bold text-muted uppercase tracking-wider">Device Malfunctions</span>
                 <div class="metric-value text-white">31</div>
                 <div class="mt-4 flex items-center gap-2">
-                    <span class="badge badge-support">High Traffic</span>
-                    <span class="text-[10px] text-muted">Technical Support Inquiries</span>
+                    <span class="badge badge-support">Critical Load</span>
+                    <span class="text-[10px] text-muted">Maintenance Threads</span>
                 </div>
             </div>
             <div class="card">
@@ -114,11 +114,12 @@
                 <div class="metric-value">63</div>
                 <span class="text-[10px] text-muted font-bold uppercase block mt-2">Combined Lead & Support Traffic</span>
             </div>
-            <div class="card">
-                <span class="text-xs font-bold text-muted uppercase tracking-wider">Avg Response Speed</span>
-                <div class="metric-value">18<span class="text-lg ml-1">min</span></div>
+            <div class="card border-red-500/50">
+                <span class="text-xs font-bold text-muted uppercase tracking-wider">Avg Support Speed</span>
+                <div class="metric-value text-red-500">18<span class="text-lg ml-1">min</span></div>
                 <div class="mt-4">
-                    <span class="badge badge-ok">Excellent</span>
+                    <span class="badge badge-alert">Failed SLA</span>
+                    <span class="text-[10px] text-red-500 font-bold block mt-1">SLA Standard: &lt; 5 mins</span>
                 </div>
             </div>
         </div>
@@ -130,7 +131,7 @@
                 <div class="flex justify-between items-start mb-8">
                     <div>
                         <h3 class="text-lg font-black uppercase italic">Daily Volume <span class="text-snapio">Split</span></h3>
-                        <p class="text-xs text-muted">B2B Lead Generation vs Device Malfunction Support</p>
+                        <p class="text-xs text-muted">Sales Opportunities vs Hardware Downtime</p>
                     </div>
                 </div>
                 <div class="chart-container">
@@ -138,21 +139,21 @@
                 </div>
             </div>
 
-            <!-- Resource Allocation -->
-            <div class="card border-snapio flex flex-col justify-between">
+            <!-- SLA Violation Alert -->
+            <div class="card border-red-600 flex flex-col justify-between">
                 <div>
-                    <h3 class="text-lg font-black uppercase italic mb-4">Traffic <span class="text-snapio">Mix</span></h3>
+                    <h3 class="text-lg font-black uppercase italic mb-4 text-red-500">SLA <span class="text-white">Violation</span></h3>
                     <p class="text-sm text-muted leading-relaxed mb-6">
-                        Support traffic accounts for <span class="text-white font-bold">49.2%</span> of all new inquiries this month.
-                        The sales team is currently spending half of their time resolving malfunctions instead of lead nurturing.
+                        The technical support response time is currently <span class="text-red-500 font-bold">18 minutes</span>. 
+                        This is <span class="text-white font-bold">260% slower</span> than the corporate 5-minute response standard.
                     </p>
                 </div>
                 <div class="space-y-4">
-                    <div class="p-4 bg-white/5 rounded-lg border border-white/10">
-                        <p class="text-[10px] font-black uppercase text-snapio mb-1">Observation</p>
-                        <p class="text-xs italic">Technical stability directly impacts B2B conversion bandwidth.</p>
+                    <div class="p-4 bg-red-500/10 rounded-lg border border-red-500/20">
+                        <p class="text-[10px] font-black uppercase text-red-500 mb-1">Critical Warning</p>
+                        <p class="text-xs italic text-red-200">Extended hardware downtime during live events severely impacts brand reputation.</p>
                     </div>
-                    <button class="btn-primary w-full">View Technical Logs</button>
+                    <button class="bg-red-600 text-white font-black py-3 rounded-lg text-xs uppercase hover:bg-red-700 transition">Emergency Ops Protocol</button>
                 </div>
             </div>
         </div>
@@ -162,17 +163,17 @@
             <div class="card">
                 <h4 class="text-sm font-black uppercase tracking-tighter italic mb-4 text-snapio">B2B Lead Performance</h4>
                 <div class="space-y-4 text-sm text-muted">
-                    <p>• <span class="text-white font-bold">Volume Deficit:</span> Inquiries are currently at 1.5/day, missing the 7-10 benchmark.</p>
-                    <p>• <span class="text-white font-bold">High Intent:</span> Despite low volume, 87.5% of leads are qualified and added to CRM.</p>
-                    <p>• <span class="text-white font-bold">Action:</span> Urgent need for broadcast re-engagement to reactivate idle capacity.</p>
+                    <p>• <span class="text-white font-bold">Inquiry Lull:</span> Current volume (1.5/day) suggests marketing efforts aren't hitting the 7-10 lead target.</p>
+                    <p>• <span class="text-white font-bold">Conversion Quality:</span> 87.5% contact save rate shows leads are high-value, even if volume is low.</p>
+                    <p>• <span class="text-white font-bold">Action:</span> Leverage idle tech team capacity (post-SLA fix) to assist in outbound sales.</p>
                 </div>
             </div>
             <div class="card">
-                <h4 class="text-sm font-black uppercase tracking-tighter italic mb-4 text-purple-400">Device Malfunction Analysis</h4>
+                <h4 class="text-sm font-black uppercase tracking-tighter italic mb-4 text-purple-400">Technical Support Breakdown</h4>
                 <div class="space-y-4 text-sm text-muted">
-                    <p>• <span class="text-white font-bold">Peak Issue Days:</span> Dec 04 (5) and Dec 15 (4) saw the highest tech support spikes.</p>
-                    <p>• <span class="text-white font-bold">Resolution Speed:</span> Support reply times are remarkably fast (avg 18 mins), prioritizing urgent hardware issues.</p>
-                    <p>• <span class="text-white font-bold">Correlation:</span> High message frequency (139 messages on Dec 13) indicates complex troubleshooting.</p>
+                    <p>• <span class="text-white font-bold">SLA Failure:</span> Average response of 18 mins is unacceptable for malfunction reports during live rentals.</p>
+                    <p>• <span class="text-white font-bold">Volume Ratio:</span> Support threads (31) match Sales inquiries (32), indicating a high maintenance burden.</p>
+                    <p>• <span class="text-white font-bold">Resource Drain:</span> Heavy messaging spikes on Dec 13/15 show support is reactive, not proactive.</p>
                 </div>
             </div>
         </div>
@@ -182,9 +183,9 @@
     <footer class="max-w-7xl mx-auto mt-24 pb-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center opacity-50">
         <div class="flex items-center grayscale opacity-80">
             <img src="https://raw.githubusercontent.com/BDGOAL/BDGOAL/refs/heads/main/525527512_18102476296562385_7326659163452741809_n.jpg" alt="SNAPIO" class="h-10">
-            <span class="ml-2 font-black italic text-xs">SNAPIO DATA LABS</span>
+            <span class="ml-2 font-black italic text-xs"></span>
         </div>
-        <p class="text-[10px] font-bold uppercase tracking-widest mt-4 md:mt-0">© 2025 SNAPIO // Internal Analytics // Confidential</p>
+        <p class="text-[10px] font-bold uppercase tracking-widest mt-4 md:mt-0 text-red-500"></p>
     </footer>
 
     <script>
